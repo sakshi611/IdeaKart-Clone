@@ -22,13 +22,22 @@ function navBar(){
 
 
 let search = (e)=>{
-    let queryId = document.getElementById('query').value
     if(e.key==='Enter'){
-        console.log('searching')
-        getData(`https://openlibrary.org/search.json?q=${queryId}&limit=30`).then((res)=>{
-            appendfun(res.docs,res.q)
-        })
+        searchfunc()
     }
+}
+
+function searchfunc(){
+    console.log('searching')
+    let queryId = document.getElementById('query').value
+   
+    document.getElementById('query').value=null
+    document.getElementById('query').placeholder ='Searching....'
+
+    getData(`https://openlibrary.org/search.json?q=${queryId}&limit=30`).then((res)=>{
+        appendfun(res.docs,res.q)
+    })
+    
 }
 
 function appendfun(data,da){
@@ -44,7 +53,7 @@ function appendfun(data,da){
     img_div.id ='img_div'
     data.forEach(ele => {
         if(ele.isbn !=undefined){
-            console.log("len",ele.isbn.length-1)
+    
             let title_div =  document.createElement('div')
             title_div.id= 'title_div'
             let h4 =  document.createElement('h4')
@@ -89,6 +98,7 @@ function appendfun(data,da){
   
     sub_div.append(img_div)
     container.append(sub_div)
+    document.getElementById('query').placeholder =''
 }
 
 let getData = async(url)=>{
