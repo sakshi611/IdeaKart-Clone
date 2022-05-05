@@ -24,6 +24,7 @@ body{
 #search_div{
     display: flex;
     flex-direction: column;
+   
 }
 
 /* #search_details{
@@ -38,6 +39,8 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
+  
+
 }
 #nav-left{
     display: flex;
