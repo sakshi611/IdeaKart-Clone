@@ -79,11 +79,11 @@ let subject=['arts','fiction','science & mathematics',"children's book","busines
                 a_div.id= 'a_div'
                 
                 let view_now = document.createElement('a')
-                view_now.className = ele.key
+                view_now.className = ele.title
                 view_now.innerHTML='<i class="fa-solid fa-eye"></i> View Now'
     
                 let more_details = document.createElement('a')
-                more_details.className = ele.key
+                more_details.className = ele.title
                 more_details.innerHTML='<i class="fa-solid fa-circle-info"></i> More Details'
     
                 let hr = document.createElement('hr')

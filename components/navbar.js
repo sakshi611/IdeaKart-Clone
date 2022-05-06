@@ -21,13 +21,11 @@ function navBar(){
 }
 
 
-// let search = ()=>{
-//         searchfunc()
-// }
+
 
 function searchfunc(queryId){
+ if(queryId){
     console.log('searching')
-    // let queryId = document.getElementById('query').value
    
     document.getElementById('input_value').value=null
     document.getElementById('input_value').placeholder ='Searching....'
@@ -37,6 +35,7 @@ function searchfunc(queryId){
 
     })
     
+ }
 }
 
 function appendfun(data,da){
@@ -69,11 +68,11 @@ function appendfun(data,da){
             a_div.id= 'a_div'
             
             let view_now = document.createElement('a')
-            view_now.className = ele.key
+            view_now.className = ele.title
             view_now.innerHTML='<i class="fa-solid fa-eye"></i> View Now'
 
             let more_details = document.createElement('a')
-            more_details.className = ele.key
+            more_details.className = ele.title
             more_details.innerHTML='<i class="fa-solid fa-circle-info"></i> More Details'
 
             let hr = document.createElement('hr')
