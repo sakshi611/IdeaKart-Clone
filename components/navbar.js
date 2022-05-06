@@ -6,36 +6,42 @@ function navBar(){
     <div id="nav-left">
         <div id="brand"><a href="index.html"><i class="fa-solid fa-lightbulb"></i>IDEAKART</a></div>
         <div id=search_div>
-            <div id="nav-input"><input type="text" name="" id="query" placeholder=" Search"><button><i class="fa-solid fa-magnifying-glass"></i></button></div>
+            <div id="nav-input"><input type="text" placeholder=" Search" id="input_value"><button  id="query"><i class="fa-solid fa-magnifying-glass"></i></button></div>
             <div id="search_details"></div>
         </div>
         
     </div>
     <div id="nav-right">
+<<<<<<< HEAD
         <a href="#">About</a>
         <a href="#">Contact</a>
         <a href="signin.html">Sign In</a>
         <a href="signup.html">Sign Up</a>
+=======
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="#">Sign In</a>
+        <a href="#">Sign Up</a>
+>>>>>>> 0e5430c343f86df1b514d32c364744b1215677ad
     </div>
     `;
 }
 
 
-let search = (e)=>{
-    if(e.key==='Enter'){
-        searchfunc()
-    }
-}
+// let search = ()=>{
+//         searchfunc()
+// }
 
-function searchfunc(){
+function searchfunc(queryId){
     console.log('searching')
-    let queryId = document.getElementById('query').value
+    // let queryId = document.getElementById('query').value
    
-    document.getElementById('query').value=null
-    document.getElementById('query').placeholder ='Searching....'
+    document.getElementById('input_value').value=null
+    document.getElementById('input_value').placeholder ='Searching....'
 
     getData(`https://openlibrary.org/search.json?q=${queryId}&limit=30`).then((res)=>{
         appendfun(res.docs,res.q)
+
     })
     
 }
@@ -98,7 +104,7 @@ function appendfun(data,da){
   
     sub_div.append(img_div)
     container.append(sub_div)
-    document.getElementById('query').placeholder =''
+    document.getElementById('input_value').placeholder =''
 }
 
 let getData = async(url)=>{
@@ -115,4 +121,4 @@ function saveFunc(data){
 }
 
 
-export  {navBar,search,getData,saveFunc};
+export  {navBar,searchfunc,getData,saveFunc};
