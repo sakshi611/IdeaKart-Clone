@@ -1,10 +1,15 @@
 // navBar
 
-import  {navBar,search,getData,saveFunc} from "../components/navbar.js"
+import  {navBar,searchfunc,getData,saveFunc} from "../components/navbar.js"
 document.getElementById('navbar').innerHTML = navBar()
 
+
 let query =document.getElementById('query')
-query.addEventListener('keydown',search)
+query.addEventListener('click',()=>{
+    let nav_input = document.getElementById('input_value').value
+    searchfunc(nav_input)
+
+})
 
 
 let container = document.querySelector('#container')
@@ -108,5 +113,4 @@ let subject=['arts','fiction','science & mathematics',"children's book","busines
 
 
 import  {bottom} from "../components/footer.js"
-// document.getElementById('footer').innerHTML = bottom()
 document.getElementById('footer').innerHTML=bottom()   

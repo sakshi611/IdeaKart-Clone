@@ -6,7 +6,7 @@ function navBar(){
     <div id="nav-left">
         <div id="brand"><a href="index.html"><i class="fa-solid fa-lightbulb"></i>IDEAKART</a></div>
         <div id=search_div>
-            <div id="nav-input"><input type="text" name="" id="query" placeholder=" Search"><button><i class="fa-solid fa-magnifying-glass"></i></button></div>
+            <div id="nav-input"><input type="text" placeholder=" Search" id="input_value"><button  id="query"><i class="fa-solid fa-magnifying-glass"></i></button></div>
             <div id="search_details"></div>
         </div>
         
@@ -21,21 +21,20 @@ function navBar(){
 }
 
 
-let search = (e)=>{
-    if(e.key==='Enter'){
-        searchfunc()
-    }
-}
+// let search = ()=>{
+//         searchfunc()
+// }
 
-function searchfunc(){
+function searchfunc(queryId){
     console.log('searching')
-    let queryId = document.getElementById('query').value
+    // let queryId = document.getElementById('query').value
    
-    document.getElementById('query').value=null
-    document.getElementById('query').placeholder ='Searching....'
+    document.getElementById('input_value').value=null
+    document.getElementById('input_value').placeholder ='Searching....'
 
     getData(`https://openlibrary.org/search.json?q=${queryId}&limit=30`).then((res)=>{
         appendfun(res.docs,res.q)
+
     })
     
 }
@@ -98,7 +97,7 @@ function appendfun(data,da){
   
     sub_div.append(img_div)
     container.append(sub_div)
-    document.getElementById('query').placeholder =''
+    document.getElementById('input_value').placeholder =''
 }
 
 let getData = async(url)=>{
@@ -115,4 +114,4 @@ function saveFunc(data){
 }
 
 
-export  {navBar,search,getData,saveFunc};
+export  {navBar,searchfunc,getData,saveFunc};
