@@ -107,3 +107,6 @@ let subject=['arts','fiction','science & mathematics',"children's book","busines
     }
 
 
+import  {bottom} from "../components/footer.js"
+// document.getElementById('footer').innerHTML = bottom()
+document.getElementById('footer').innerHTML=bottom()   

@@ -1,9 +1,24 @@
+html{
+    height: 100%;
+}
 body{
     background-color: #eff3f8;
     margin: 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }
 
+#footer{
+    border-top: 2px solid black;
+    padding-left: 13%;
+    margin-top: 15%;
+    background-color: #fff;
+}
+#container{
+    height: 100%;
+}
 #navbar a{
     text-decoration: none;
 }
@@ -123,4 +138,3 @@ body{
     height: 39px;
     overflow: hidden;
 }
-
