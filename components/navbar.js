@@ -12,10 +12,17 @@ function navBar(){
         
     </div>
     <div id="nav-right">
+<<<<<<< HEAD
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+=======
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="#">Sign In</a>
         <a href="#">Sign Up</a>
+>>>>>>> 0e5430c343f86df1b514d32c364744b1215677ad
     </div>
     `;
 }
