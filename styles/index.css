@@ -16,18 +16,17 @@ body{
     margin-top: 15%;
     background-color: #fff;
 }
-#container{
-    height: 100%;
-}
+
 #navbar a{
     text-decoration: none;
 }
 #navbar input{
-    height: 30px;
-    font-size: 18px;
+    height: 80%;
+    font-size: 95%;
 }
 #navbar button{
-    height: 36px;
+
+    height: 99%;
     margin: 0%;
     font-size: 18px;
 }
@@ -37,16 +36,12 @@ body{
 
 }
 #search_div{
+    margin-top: 1%;
     display: flex;
     flex-direction: column;
    
 }
 
-/* #search_details{
-    border: 1px solid black;
-    height: 500px;
-    width: 360x;
-} */
 
 #navbar{
     height: 50px;
@@ -70,8 +65,10 @@ body{
     color: #fff;
 }
 
+
+
 #brand a{
-    font-size: 2em;   
+    font-size: 1.5em;   
     color: yellow;
 }
 #brand a:hover{ 
@@ -141,3 +138,96 @@ body{
     height: 39px;
     overflow: hidden;
 }
+
+
+
+/* Medium screens */
+@media only screen and (min-width: 866px) and (max-width: 915px) {
+    #img_div{
+        grid-template-columns: repeat(3,1fr);
+    }
+    
+    #navbar input{
+        width: 300px;
+    }
+ 
+    #brand a{
+        font-size: 1.5em;   
+    }
+}   
+
+@media only screen and (min-width: 421px) and (max-width: 869px) {
+    #img_div{
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    #navbar input{
+        width: 150px;
+    }
+ 
+    #brand a{
+        font-size: 20px;   
+    }
+}   
+
+
+@media only screen and (min-width: 421px) and (max-width: 716px) {
+    #img_div{
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+    #navbar input{
+        width: 70px;
+    }
+
+    #navbar button{
+        font-size: 16px;
+        height: 24px;
+    }
+ 
+    #brand a{
+        font-size: 1em;   
+    }
+    #nav-right a{
+        font-size: 12px;   
+    }
+    #nav-right{
+        gap:9px
+    }
+    #nav-left{
+        gap:15px
+    }
+}   
+
+/* small screens */
+@media only screen and (min-width: 70px) and (max-width: 420px) {
+    #img_div{
+        grid-template-columns: repeat(1,1fr);
+    }
+   
+    
+    #navbar input{
+        width: 50px;
+        font-size: 8px;
+        height: 12px;
+    }
+    #navbar button{
+        font-size: 6px;
+        height: 18px;
+    }
+    #brand a{
+        font-size: 11px;   
+    }
+    #nav-right a{
+        font-size: 10px;   
+    }
+    #nav-right{
+        gap:8px
+    }
+    #nav-left{
+        gap:8px
+    }
+    #navbar{
+        height: 30px;
+    }
+} 
