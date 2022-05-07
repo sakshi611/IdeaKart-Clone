@@ -34,6 +34,9 @@ fetch(`https://openlibrary.org/search.json?q=${workID}`)
 })
 })
 
+
+let arr = JSON.parse(localStorage.getItem("cart"))||[];
+
 function append(data){
 
     let container1=document.getElementById("container1");
@@ -63,6 +66,13 @@ function append(data){
     let button = document.createElement("button");
     button.setAttribute("class","btn");
     button.innerText = "Buy Now";
+    button.addEventListener("click",function(){
+
+        arr.push(data);
+        localStorage.setItem("cart",JSON.stringify(arr));
+        window.location.href="cart.html";
+
+    })
 
     let bookSpecs = document.createElement("div");
     bookSpecs.setAttribute("id","specs");
@@ -186,6 +196,12 @@ function append(data){
     let button1 = document.createElement("button");
     button1.setAttribute("id","btn1")
     button1.innerText = "Add to Cart"
+    button1.addEventListener("click", function(){
+        
+        arr.push(data);
+
+        localStorage.setItem("cart",JSON.stringify(arr));
+    });
 
     let history = document.createElement("h3");
     history.innerText = "This is the price history of this book :"

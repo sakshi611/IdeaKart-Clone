@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/payment.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="header">
+        <h2>IDEAKART</h2>
+    </div>
+
+    <div id="sub_header"><h2 id="back">Back</h2><h2>SECURE TRANSACTION</h2></div>
+  
+
+    <div id="content">
+
+        <img src="https://tse4.mm.bing.net/th?id=OIP.qMH0glb2XQ7-7rdRfVQcxgHaCc&pid=Api&P=0&w=496&h=163" alt="payment gateway">
+       <hr>
+        <div class="card"><h3>Card Number : </h3><input type="text" placeholder="Enter your card number"></div>
+        <div class="num"><h3>Expiry : </h3><input type="date" placeholder="Select Expiry date"><h3>CVV : </h3><input type="number" placeholder="cvv"></div>
+        <div class="cardname"><h3>Card holder Name : </h3><input type="text" placeholder="Enter Name"></div>
+    
+        <hr>
+
+        <div><button id="submit">Conifirm and Submit</button></div>
+    </div>
+</body>
+</html>
+<script>
+    let backfun = ()=>{
+
+        window.location.href = "checkout.html";
+    }
+
+    document.getElementById("back").addEventListener("click",backfun);
+
+    let confirm=()=>{
+
+        window.location.href ="otp.html";
+    }
+
+    document.getElementById("submit").addEventListener("click",confirm);
+</script>

@@ -1,0 +1,145 @@
+#sub_header{
+    margin-top: 10px;
+     display: flex;
+     justify-content: space-between;
+     padding: 10px;
+     border: 1px solid black;
+     align-items: center;
+     background-color: rgb(134, 198, 160);
+     margin-bottom: 2%;
+     background-image: url("https://static.vecteezy.com/system/resources/previews/000/327/927/original/abstract-particles-dots-background-banner-vector.jpg");
+ }
+ #back{
+
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#back>img{
+    width: 40%;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+.sub{
+    color: rgb(251, 252, 255);
+}
+#content{
+    display: flex;
+    justify-content:space-between;
+   width: 90%;
+   margin: auto;
+}
+
+#summary{
+
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;    padding: 2%;
+    text-align: center;
+    width: 20%;
+    background-color: antiquewhite;
+}
+.SumCart{
+    display: flex;
+    justify-content: space-between;
+
+}
+.SumCart>h3{
+    color: gray;
+}
+#summary>button{
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(238, 54, 54);
+    color: white;
+    cursor: pointer;
+}
+#order{
+    color: rgb(244, 55, 55);
+    text-decoration: underline;
+}
+#input{
+    display: flex;
+    justify-content: center;
+    height: 35px;
+    font-size: 17px;
+}
+#coupon{
+    width: 70%;
+    
+}
+#coupon~button{
+    width: 30%;
+    height: 100%;
+    font-size: 17px;
+    background-color: #fff2f0;
+    color: red;
+    border: 0.5px solid red;
+}
+#address{
+    width: 70%;
+}
+body{
+    background-image: url("https://www.odysseyis.com/wp-content/uploads/2019/05/46598089_m-2-e1558647186168.jpg");  
+
+}
+.detail1{
+    width: 100%;
+  
+    height: 50px;
+    margin-bottom: 20px;
+  padding: 10px;
+}
+.detail1>input{
+    width: 45%;
+    height: 90%;
+    font-size: 20px;
+}
+.detail2{
+    width: 100%;
+    
+    height: 50px;
+    margin-bottom: 20px;
+  padding: 10px;
+}
+.detail2>input{
+    width: 29.5%;
+    height: 90%;
+    font-size: 20px;
+}
+hr{
+    height: 5px;
+    background-color: black;
+}
+#save{
+    width: 40%;
+    margin: auto;
+}
+#save>button{
+    width: 100%;
+    height: 50px ;
+    font-size: 25px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color:  rgb(244, 55, 55);
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+}
+#footer{
+ 
+    margin-top: 4%;
+   
+}
+a {
+    text-decoration:none;
+    color: rgb(64, 157, 193);
+   
+}
+a:hover{
+    text-decoration: underline;
+    color: rgb(47, 15, 164);
+}

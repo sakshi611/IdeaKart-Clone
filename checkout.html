@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/checkout.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://kit.fontawesome.com/16c456c613.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="sub_header">
+        <div id="back"><img
+                src="https://cdn-icons-png.flaticon.com/512/3925/3925149.png"
+                alt="back"><a href="cart.html">
+                <h2 class="sub">Cart</h2>
+            </a></div>
+       
+         <div id="checkout">
+                <h2 class="sub">Checkout</h2>
+                <h2 class="items"></h2>
+           </div>
+    </div>
+
+
+    <div id="content">
+        <div id="address">
+            <div id="add"><h2>DELIVERY ADDRESS</h2></div>
+            <hr>
+            <div id="details">
+
+                <div class="detail1">
+                    <input type="text" placeholder="First Name*">
+                    <input type="text" placeholder="Last Name*">
+                </div>
+                <div  class="detail1">
+                    <input type="number" placeholder="Mobile Number*">
+                    <input type="email" placeholder="Your Email*">
+                </div>
+                <div class="detail2">
+                    <input type="number" placeholder="Pincode*">
+                    <input type="text" placeholder="State*">
+                    <input type="text" placeholder="Dist*">
+                </div>
+                <div class="detail1">
+                    <input type="text" placeholder="Address line 1*">
+                    <input type="text" placeholder="Address line 2*">
+                </div>
+                <hr>
+                <div id="checkbox">
+
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <label for="vehicle1">Use this as my default delivery address</label><br>
+                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                    <label for="vehicle2"> I agree to the Terms and Conditions</label><br>
+                    
+                </div>
+                <hr>
+                <div id="save"><button>Save and Proceed</button></div>
+            </div>
+        </div>
+        
+        <div id="summary">
+            <div id="order">
+                <h2>ORDER SUMMARY</h2>
+            </div>
+            <div class="SumCart">
+                <h3>Sub Total </h3>
+                <h3 id="total"></h3>
+            </div>
+            <div  class="SumCart">
+                <h3>Delivery Charges*</h3>
+                <h3>NA</h3>
+            </div>
+            <div  class="SumCart">
+                <h3>Gift Packing</h3>
+                <h3>NA</h3>
+            </div>
+            <div  class="SumCart">
+                <h3>Coupon Discount</h3>
+                <h3 id="couponDis"></h3>
+            </div>
+            <hr>
+            <div class="SumCart">
+                <h3>Payable Amount</h3>
+                <h3 id="payable"></h3>
+            </div>
+           
+            <p>No Delivery charges for Express Store Pickup.</p>
+            <p>Do you have a gift card or and electronic gift voucher? Use it at the payment page</p>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+</body>
+</html>
+<script type="module">
+
+import { navBar } from "./components/navbar.js";
+
+document.getElementById("navbar").innerHTML = navBar();
+
+import {bottom} from "./components/footer.js";
+
+document.getElementById("footer").innerHTML=bottom();
+
+    let mypayment=()=>{
+
+        alert("Your Delivery Address has been Submitted.");
+        window.location.href="payment.html";
+        
+    }
+    document.getElementById("save").addEventListener("click",mypayment);
+
+ let subtotal = JSON.parse(localStorage.getItem("subtotal"));
+ document.getElementById("total").innerHTML=subtotal;
+ let payableAmount = JSON.parse(localStorage.getItem("payableAmount"));
+ document.getElementById("payable").innerHTML=payableAmount;
+
+ let discount = JSON.parse(localStorage.getItem("discount"));
+ document.getElementById("couponDis").innerHTML=discount;
+
+</script>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://kit.fontawesome.com/16c456c613.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <div id="sub_header">
+        <div id="back"><img src="https://cdn-icons-png.flaticon.com/512/3925/3925149.png" alt="back"><a
+                href="products.html">
+                <h2 class="sub">Back</h2>
+            </a></div>
+
+        <div id="checkout">
+            <h2 class="sub">Your Cart</h2>
+            <h2 id="items"></h2>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="cart">
+            <div id="product">
+                <h2>Your Cart Details</h2>
+            </div>
+            <div id="details"></div>
+        </div>
+
+        <div id="summary">
+            <div id="order">
+                <h2>ORDER SUMMARY</h2>
+            </div>
+            <div class="SumCart">
+                <h2>Sub Total </h2>
+                <h2 id="total"></h2>
+            </div>
+            <div id="input">
+                <input type="text" id="coupon" placeholder="Apply Coupon">
+                <button id="apply">Apply</button>
+            </div>
+            <div class="SumCart">
+                <h3>Delivery Charges*</h3>
+                <h3>NA</h3>
+            </div>
+            <div class="SumCart">
+                <h3>Gift Packing</h3>
+                <h3>NA</h3>
+            </div>
+            <div class="SumCart">
+                <h3>Coupon Discount</h3>
+                <h3 id="couponDis"></h3>
+            </div>
+            <hr>
+            <div class="SumCart">
+                <h2>Payable Amount</h2>
+                <h2 id="payable"></h2>
+            </div>
+            <button id="checkout1">Checkout</button>
+            <p>No Delivery charges for Express Store Pickup.</p>
+            <p>Do you have a gift card or and electronic gift voucher? Use it at the payment page</p>
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+
+</html>
+
+<script type="module">
+
+    import { navBar } from "./components/navbar.js";
+
+    document.getElementById("navbar").innerHTML = navBar();
+
+    import {bottom} from "./components/footer.js";
+
+    document.getElementById("footer").innerHTML=bottom();
+
+    let funCheck = () => {
+
+        console.log("hey");
+        window.location.href = "checkout.html";
+
+    }
+    document.getElementById("checkout1").addEventListener("click", funCheck);
+
+
+    let arr = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log(arr, arr.length);
+
+    let price = 300;
+
+    document.getElementById("items").innerText = `:(${arr.length} Items)`;
+
+
+
+
+    let total = Math.ceil(arr.length * price);
+    localStorage.setItem("subtotal",JSON.stringify(total));
+
+    document.getElementById("total").innerText = (`₹${total}`);
+    document.getElementById("payable").innerText = (`₹${total}`);
+
+
+    let couponFun = () => {
+
+        if (document.getElementById("coupon").value == "masai20") {
+
+            total = total * 0.8;
+            document.getElementById("payable").innerText = (`₹${total}`);
+            let payableAmount = total;
+            localStorage.setItem("payableAmount",JSON.stringify(payableAmount));
+
+            document.getElementById("couponDis").innerText = "20%";
+            let dis="20%";
+            localStorage.setItem("discount",JSON.stringify(dis));
+
+            document.getElementById("coupon").value = "";
+            document.getElementById("coupon").disabled = true;
+        }
+        else if (document.getElementById("coupon").disabled == true) {
+            alert(" coupon applied");
+        } else {
+            alert("Enter a valid coupon");
+        }
+    }
+
+
+    document.getElementById("apply").addEventListener("click", couponFun);
+
+ 
+
+    let appendData = (arr, price) => {
+
+      
+
+        arr.map((el, index) => {
+
+            let qty1;
+
+            let div = document.createElement("div");
+            div.setAttribute("id", "contentDiv");
+
+            let Rdiv = document.createElement("div");
+            Rdiv.setAttribute("id", "contentRDiv");
+
+            let img = document.createElement("img");
+            img.src = `https://covers.openlibrary.org/b/id/${el.cover_i}-L.jpg`;
+
+            Rdiv.append(img);
+
+            let Ldiv = document.createElement("div");
+            Ldiv.setAttribute("id", "contentLDiv");
+
+            let h3 = document.createElement("h3");
+            h3.innerText = el.title;
+
+            let p = document.createElement("p");
+            p.innerText = el.author_name[0];
+
+            let main = document.createElement("div");
+            main.setAttribute("id", "maindiv");
+
+            let div1 = document.createElement("div");
+            div1.setAttribute("id", "qty");
+
+            let p1 = document.createElement("h3");
+            p1.innerText = "QTY:";
+
+            let inp = document.createElement("select");
+            inp.setAttribute("id", "quant");
+        
+
+            let option1 = document.createElement("option");
+            option1.innerText = 1;
+            option1.value = 1;
+           
+
+
+            inp.append(option1);
+
+            let div2 = document.createElement("div");
+            div2.setAttribute("id", "price");
+
+            let btn = document.createElement("button");
+            btn.setAttribute("id", "remove");
+            btn.innerText = "Remove";
+            btn.addEventListener("click", () => {
+
+                Myremove(el, index);
+            })
+
+            let div3 = document.createElement("div");
+            div3.setAttribute("id", "price");
+            div3.style.display = "flex";
+
+            let p3 = document.createElement("h3");
+            p3.innerText = "Price:";
+
+            let price1 = document.createElement("h3");
+            price1.setAttribute("id","price1");
+            price1.innerText = price;
+
+
+            div1.append(p1, inp);
+            div2.append(btn);
+            div3.append(p3, price1);
+
+            main.append(div1, div2, div3);
+            Ldiv.append(h3, p, main);
+
+            div.append(Rdiv, Ldiv);
+
+            document.getElementById("details").append(div);
+
+        });
+
+
+
+    }
+
+    appendData(arr, price);
+
+    function Myremove(el, index) {
+
+        arr.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(arr));
+        window.location.reload();
+        document.getElementById("items").innerText = `:(${arr.length}Items)`;
+        total = (arr.length * price);
+        document.getElementById("total").innerText = (`₹${total}`);
+        document.getElementById("payable").innerText = (`₹${total}`);
+
+    }
+
+
+
+
+// document.getElementById("quant").addEventListener("click",totalsum);
+</script>
+
+
+<!-- author_alternative_name: (18) ['Theo Le Sieg', 'by Dr. Seuss [Theodor Seuss Geisel]', 'Seuss, Dr', 'Doctor Seuss', 'Ted Geisel', 'Theodore Seuss Geisel', 'Seuss Dr', 'Theo. LeSieg', 'by Dr. Seuss [Theodore Geisel]', 'Theodor Seuss Geisel', 'Theo. LeSieg (Dr. Seuss, 1904-1991)', 'Dr Seuss', 'Seuss', 'dr seuss', 'Theo LeSieg', 'Dr. Seuss', 'DR SEUSS', 'DR. SEUSS']
+author_facet: ['OL2622837A Dr. Seuss']
+author_key: ['OL2622837A']
+author_name: ['Dr. Seuss']
+contributor: (3) ['Dr. Seuss (Illustrator)', 'Naʾor, Leʾah, tr.', 'Adrian Edmondson (Narrator)']
+cover_edition_key: "OL7464790M"
+cover_i: 8832133
+ddc: (3) ['428.6', '[E]', '813.54']
+ddc_sort: "813.54"
+ebook_count_i: 8
+edition_count: 31
+edition_key: (31) ['OL21922901M', 'OL18387150M', 'OL18615611M', 'OL7464790M', 'OL22819664M', 'OL23249960M', 'OL14868553M', 'OL9209293M', 'OL10158818M', 'OL10160705M', 'OL7464421M', 'OL22946999M', 'OL13060528M', 'OL21560995M', 'OL5940121M', 'OL9209327M', 'OL18634655M', 'OL9618982M', 'OL9209367M', 'OL32100232M', 'OL9219421M', 'OL7264706M', 'OL7262729M', 'OL9217444M', 'OL9219402M', 'OL7264687M', 'OL26113541M', 'OL26076879M', 'OL25289857M', 'OL27741918M', 'OL7462969M']
+first_publish_year: 1965
+first_sentence: ['Fox Socks Box Knox']
+has_fulltext: true
+ia: (8) ['foxinsocks0000seus_i8f2', 'foxinsocksbeginn00drse', 'foxinsocks0000seus_z7d9', 'foxinsocks0000seus_a4l6', 'foxinsocks0000seus_y8g0', 'foxinsocksdrseus0000seus', 'foxinsocks00seus', 'foxinsocks1965seus']
+ia_box_id: (9) ['IA40052717', 'IA118901', 'IA1934023', 'IA40009409', 'IA157401', 'IA108916', 'IA40108817', 'IA40109620', 'BL11203T']
+ia_collection_s: "inlibrary;internetarchivebooks;printdisabled;americana;china;delawarecountydistrictlibrary"
+ia_loaded_id: (2) ['foxinsocks00seus_0', 'foxinsocks1965seus']
+id_goodreads: (13) ['2875719', '1615600', '23646483', '2875718', '105551', '1458133', '3834171', '239955', '1161686', '532191', '1542686', '2711305', '2467680']
+id_librarything: (2) ['54638', '8995052']
+isbn: (39) ['0394036514', '000767256X', '9780001717985', '0001717987', '9780001713116', '9780583324199', '9780394883229', '0394900389', '9780394036519', '0001711245', '9780394900384', '9573214563', '9780007661381', '0394883225', '000766138X', '9780307931801', '0007141912', '9780394800387', '9780007441556', '0007414234', '0307931803', '0007158475', '0394883233', '9780808524441', '9780007414239', '0808524445', '0394900383', '0583324193', '000744155X', '0394800389', '9780394883236', '9780007141913', '9780007158478', '9780001720664', '9789573214564', '0001713116', '9780007672561', '9780001711242', '000172066X']
+key: "/works/OL261159W"
+language: (3) ['eng', 'chi', 'spa']
+last_modified_i: 1647845413
+lcc: (7) ['PS-3513.00000000.E2 F69 1966', 'PZ-0008.30000000.G276 Fo 1965', 'PZ-0008.30000000.G276 Fo', 'PZ-0008.30000000.G276 Fo 65-10484', 'PZ-0008.30000000.G276 Fo 2011', 'PS-3513.00000000.E2 F69 1965', 'PZ-0008.30000000.G276Fo 2011']
+lcc_sort: "PZ-0008.30000000.G276 Fo 65-10484"
+lccn: (3) ['00171124', '65010484', '2011934277']
+lending_edition_s: "OL18387150M"
+lending_identifier_s: "foxinsocksdrseus0000seus"
+number_of_pages_median: 62
+oclc: (10) ['1028428210', '247122211', '29307056', '10050872', '155263517', '759885475', '50582236', '28499570', '254554086', '43418923']
+printdisabled_s: "OL26113541M;OL7464790M;OL9209327M;OL7264687M;OL32100232M;OL7462969M;OL5940121M;OL18387150M"
+public_scan_b: false
+publish_date: (20) ['2002', '2011', 'October 1999', '1993', '1965', '2015', '1997', 'December 5, 2005', 'November 1976', 'October 12, 1986', '2003 May 6', 'April 12, 1965', '1986', 'May 6, 2003', 'August 1996', '1992', '1966', 'December 1, 1992', 'May 2, 2000', 'January 23, 2020']
+publish_place: (9) ['Yerushalayim', 'London, England', 'New York, NY', 'Taibei Shi', 'London', 'New York', 'Random House New York', 'Toronto, Canada', 'New York, USA']
+publish_year: (16) [2002, 1986, 2000, 2011, 1993, 1992, 2005, 2003, 1965, 1966, 2015, 2020, 1997, 1976, 1999, 1996]
+publisher: (24) ['Random House, Inc.', 'Beginner Books: Random House Inc.', 'Beginner Books', "HarperCollins Children's Books", '& simultaneously in Canada by Random House of Canada, Ltd.', 'Amer School Pub', 'Collins and Harvill', 'Random House of Canada Limited', 'Picture Lions', 'Random House', 'Yuan Liu', 'Beginner Books, a div. of Random House, Inc.', 'Collins Harvill', 'HarperCollins Publishers', 'Collins Audio', 'Random House Books for Young Readers', 'HarperCollins', 'Yuan liu chu ban shi ye gu fen you xian gong si', 'Clearway Logistics Phase 1a', 'Keter', 'Random House of Canada, Ltd.', 'Tandem Library', 'Collins', 'Books for Young Readers : Div. of Random House, Inc.']
+publisher_facet: (24) ['& simultaneously in Canada by Random House of Canada, Ltd.', 'Amer School Pub', 'Beginner Books', 'Beginner Books, a div. of Random House, Inc.', 'Beginner Books: Random House Inc.', 'Books for Young Readers : Div. of Random House, Inc.', 'Clearway Logistics Phase 1a', 'Collins', 'Collins Audio', 'Collins Harvill', 'Collins and Harvill', 'HarperCollins', "HarperCollins Children's Books", 'HarperCollins Publishers', 'Keter', 'Picture Lions', 'Random House', 'Random House Books for Young Readers', 'Random House of Canada Limited', 'Random House of Canada, Ltd.', 'Random House, Inc.', 'Tandem Library', 'Yuan Liu', 'Yuan liu chu ban shi ye gu fen you xian gong si']
+seed: (89) ['/books/OL21922901M', '/books/OL18387150M', '/books/OL18615611M', '/books/OL7464790M', '/books/OL22819664M', '/books/OL23249960M', '/books/OL14868553M', '/books/OL9209293M', '/books/OL10158818M', '/books/OL10160705M', '/books/OL7464421M', '/books/OL22946999M', '/books/OL13060528M', '/books/OL21560995M', '/books/OL5940121M', '/books/OL9209327M', '/books/OL18634655M', '/books/OL9618982M', '/books/OL9209367M', '/books/OL32100232M', '/books/OL9219421M', '/books/OL7264706M', '/books/OL7262729M', '/books/OL9217444M', '/books/OL9219402M', '/books/OL7264687M', '/books/OL26113541M', '/books/OL26076879M', '/books/OL25289857M', '/books/OL27741918M', '/books/OL7462969M', '/works/OL261159W', '/subjects/open_library_staff_picks', '/subjects/juvenile_fiction', '/subjects/foxes', '/subjects/fiction', '/subjects/stories_in_rhyme', '/subjects/nonsense_verses', '/subjects/juvenile_literature', '/subjects/fantasy', '/subjects/tongue_twisters', '/subjects/beginner', '/subjects/concepts', '/subjects/littérature_pour_la_jeunesse_anglaise', '/subjects/reader', '/subjects/animals', '/subjects/sounds', '/subjects/*2015_50th_anniversary', '/subjects/*1965_orig._public.', '/subjects/*1993_copyright_renewal', '/subjects/*christianbook.com', '/subjects/*age_3-7', '/subjects/preschool_to_gr.2', '/subjects/*_suitable_for_all_ages', '/subjects/dr._seuss', '/subjects/fox_in_socks', '/subjects/beginner_books', '/subjects/i_can_read_it_all_by_myself', '/subjects/kids', '/subjects/children', "/subjects/children's", '/subjects/juvenile', '/subjects/books', '/subjects/stories', '/subjects/literature', '/subjects/tongue_twister', '/subjects/rhymes', '/subjects/book_in_rhymes', '/subjects/1986', '/subjects/fox_in_sox', '/subjects/read-along', '/subjects/sound', '/subjects/recordings', '/subjects/cassette', '/subjects/rhyme', '/subjects/board_books', "/subjects/children's_fiction", '/subjects/humorous_stories', '/subjects/juvenile_poetry', '/subjects/character_books', '/subjects/picture_books', '/subjects/children:_kindergarten', '/subjects/juvenile_fiction', "/subjects/children's_stories", '/subjects/foxes_fiction', '/subjects/fantasy_fiction', '/subjects/child_and_youth_fiction', '/subjects/time:1965', '/authors/OL2622837A']
+subject: (57) ['Open Library Staff Picks', 'Juvenile fiction', 'Foxes', 'Fiction', 'Stories in rhyme', 'Nonsense verses', 'Juvenile literature', 'Fantasy', 'Tongue twisters', 'Beginner', 'Concepts', 'Littérature pour la jeunesse anglaise', 'Reader', 'Animals', 'Sounds', '*2015 50th Anniversary', '*1965 Orig. Public.', '*1993 Copyright renewal', '*Christianbook.com', '*Age 3-7', 'Preschool to gr.2', '* Suitable for all ages', 'Dr. Seuss', 'Fox in Socks', 'Beginner Books', 'I Can Read It All By Myself', 'Kids', 'Children', "Children's", 'Juvenile', 'Books', 'Stories', 'Literature', 'Tongue twister', 'Rhymes', 'Book in rhymes', '1986', 'Fox in Sox', 'Read-Along', 'Sound', 'Recordings', 'Cassette', 'Rhyme', 'Board books', "Children's fiction", 'Humorous stories', 'Juvenile poetry', 'Character books', 'Picture books', 'Children: Kindergarten', 'JUVENILE FICTION', "Children's stories", 'Foxes, fiction', 'Fantasy fiction', 'Child and youth fiction', 'Accessible book', 'Protected DAISY']
+subject_facet: (57) ['* Suitable for all ages', '*1965 Orig. Public.', '*1993 Copyright renewal', '*2015 50th Anniversary', '*Age 3-7', '*Christianbook.com', '1986', 'Accessible book', 'Animals', 'Beginner', 'Beginner Books', 'Board books', 'Book in rhymes', 'Books', 'Cassette', 'Character books', 'Child and youth fiction', 'Children', "Children's", "Children's fiction", "Children's stories", 'Children: Kindergarten', 'Concepts', 'Dr. Seuss', 'Fantasy', 'Fantasy fiction', 'Fiction', 'Fox in Socks', 'Fox in Sox', 'Foxes', 'Foxes, fiction', 'Humorous stories', 'I Can Read It All By Myself', 'JUVENILE FICTION', 'Juvenile', 'Juvenile fiction', 'Juvenile literature', 'Juvenile poetry', 'Kids', 'Literature', 'Littérature pour la jeunesse anglaise', 'Nonsense verses', 'Open Library Staff Picks', 'Picture books', 'Preschool to gr.2', 'Protected DAISY', 'Read-Along', 'Reader', 'Recordings', 'Rhyme', 'Rhymes', 'Sound', 'Sounds', 'Stories', 'Stories in rhyme', 'Tongue twister', 'Tongue twisters']
+subject_key: (56) ['*1965_orig._public.', '*1993_copyright_renewal', '*2015_50th_anniversary', '*_suitable_for_all_ages', '*age_3-7', '*christianbook.com', '1986', 'accessible_book', 'animals', 'beginner', 'beginner_books', 'board_books', 'book_in_rhymes', 'books', 'cassette', 'character_books', 'child_and_youth_fiction', 'children', "children's", "children's_fiction", "children's_stories", 'children_kindergarten', 'concepts', 'dr._seuss', 'fantasy', 'fantasy_fiction', 'fiction', 'fox_in_socks', 'fox_in_sox', 'foxes', 'foxes_fiction', 'humorous_stories', 'i_can_read_it_all_by_myself', 'juvenile', 'juvenile_fiction', 'juvenile_literature', 'juvenile_poetry', 'kids', 'literature', 'littérature_pour_la_jeunesse_anglaise', 'nonsense_verses', 'open_library_staff_picks', 'picture_books', 'preschool_to_gr.2', 'protected_daisy', 'read-along', 'reader', 'recordings', 'rhyme', 'rhymes', 'sound', 'sounds', 'stories', 'stories_in_rhyme', 'tongue_twister', 'tongue_twisters']
+time: ['1965']
+time_facet: ['1965']
+time_key: ['1965']
+title: "Fox in Socks"
+title_suggest: "Fox in Socks"
+type: "work"
+_version_: 1727891155573538800
+[[Prototype]]: Object -->
