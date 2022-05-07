@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/otp.css">
+    <title>Confirmation OTP</title>
+</head>
+
+<body>
+    <div id="otp">
+        <div id="first">
+
+            <div><img src="https://cdn-icons-png.flaticon.com/512/1773/1773239.png">
+                <h3>OTP</h3>
+                <h4>Please enter the otp sent to your mobile number</h4>
+            </div>
+           
+        </div>
+        <div id="second">
+           <div>
+                <input id="otp1" type="number" placeholder="Enter your OTP">
+                <button id="submit">SUBMIT</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    
+    let submitfun=()=>{
+
+        if(document.getElementById("otp1").value == 12345){
+
+            window.location.href="confirmation.html";
+        }
+        else{
+            alert("Enter a valid OTP!!");
+        }
+      
+    }
+
+    document.getElementById("submit").addEventListener("click",submitfun);
+
+
+</script>
