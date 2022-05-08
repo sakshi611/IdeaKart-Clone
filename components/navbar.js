@@ -14,8 +14,8 @@ function navBar(){
     <div id="nav-right">
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="signin.html">Sign In</a>
-        <a href="signup.html">Sign Up</a>
+        <a href="signin.html">Login</a>
+        <a href="signup.html">Cart</a>
     </div>
     `;
 }
