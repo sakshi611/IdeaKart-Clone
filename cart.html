@@ -74,7 +74,7 @@
 
 <script type="module">
 
-    import { navBar } from "./components/navbar.js";
+    import { navBar,searchfunc,getData,saveFunc } from "./components/navbar.js";
 
     document.getElementById("navbar").innerHTML = navBar();
 
@@ -102,9 +102,11 @@
 
 
     let total = Math.ceil(arr.length * price);
+
     localStorage.setItem("subtotal",JSON.stringify(total));
 
     document.getElementById("total").innerText = (`₹${total}`);
+    
     document.getElementById("payable").innerText = (`₹${total}`);
 
 
@@ -112,9 +114,11 @@
 
         if (document.getElementById("coupon").value == "masai20") {
 
-            total = total * 0.8;
-            document.getElementById("payable").innerText = (`₹${total}`);
-            let payableAmount = total;
+            let payableAmount = total * 0.8;
+
+            document.getElementById("payable").innerText = (`₹${payableAmount}`);
+
+            
             localStorage.setItem("payableAmount",JSON.stringify(payableAmount));
 
             document.getElementById("couponDis").innerText = "20%";
