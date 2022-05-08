@@ -40,7 +40,13 @@
 
     let confirm=()=>{
 
-        window.location.href ="otp.html";
+        if(document.querySelector("input").value){
+            window.location.href ="otp.html";
+
+        }
+        else{
+            alert("Fill the correct details");
+        }
     }
 
     document.getElementById("submit").addEventListener("click",confirm);

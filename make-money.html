@@ -103,7 +103,7 @@
             border-radius: 4px;
        }
        #footer{
-            margin-left: 17%;
+         
             margin-top: 4%;
            
         }
@@ -167,7 +167,7 @@
                 <iframe src="https://www.youtube.com/embed/TfQyg-DSHBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div >
-                <button class="btn" href="/dashboard">Get Started!</button>
+                <button class="btn" >Get Started!</button>
                 </div>
                 </div>
   
@@ -179,12 +179,19 @@
 </body>
 </html>
 <script type="module">
-   import  {navBar,search,getData,saveFunc} from "./components/navbar.js"
+   import  {navBar,searchfunc,getData,saveFunc} from "./components/navbar.js"
 document.getElementById('navbar').innerHTML = navBar()
 
 import { bottom }from './components/footer.js'
 
 document.getElementById('footer').innerHTML=bottom();
+document.querySelector(".btn").addEventListener("click",redirectfun);
+
+function redirectfun(){
+
+    window.location.href="signin.html";
+}
     
+
     
     </script>
