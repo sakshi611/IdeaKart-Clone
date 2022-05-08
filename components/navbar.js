@@ -15,7 +15,7 @@ function navBar(){
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="signin.html">Login</a>
-        <a href="signup.html">Cart</a>
+        <a href="cart.html">Cart</a>
     </div>
     `;
 }
