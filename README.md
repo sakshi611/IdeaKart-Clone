@@ -19,22 +19,26 @@ Technology Used
 •	CSS
 •	JAVASCRIPT
 
-Some Glimpse  and Screenshot of our Website:
+Some Glimpses and Screenshots of our Website:
 Home page: This is main landing page of our website. Here clicking on any option on navbar will redirect to respective page. It is fully functional and responsive.
 
 Sign In And Signup: Signin and signup form here we have a sign-in then click on login then customer redirect to the signin page if customer does signup already then 
 first customer have to have sign then simply click on signup after that redirect to signup page then after sign up customer again redirect to sign in after sign in 
 customer go onto index page.
 
-About: In the about there is some detail information about the website and there is also provide footer.
+About: In the about there is some detail information about the website and we have also added footer over there.
 
-Contact:  By using this contact us page it is directly contact with customer care it is work like halp ticket.
+Contact:  This page is for help and support and is used regarding any issue with the products delivery, i.e it directly contacts with customer care.
 
-Privacy Policy: There is all term and condition and also details about the privacy and policy.
+Privacy Policy: There is all terms and conditions and details about the privacy and policy.
 
-Make Money: In make money page if want to earn money from home then simply sign up from make money page click on get started button.
+Make Money: In make money page if want to earn money from home then simply sign up from make money page and click on get started button.
 
-Product:In the product there is all detail about particular page you want buy this book then you will click on buy now button. after that you will redirect to cart page.
-In cart page if there will the which you will added into cart you want to remove you also remove the book by clicking on remove button.for buy the the product there is also
-option that is coupon that is maisai20 after entering that you will get 20% discount per book.After you will redirect to checkout page there is fill all the details of customer. after click
-proceed button customer redirect to payment page there is also fill the payment detail after that you will redirect otp after you will enter otp then display the message of successfull. 
+Products Page: In the product there is all detail about particular page you want buy this book then you will click on buy now button. after that you will redirect to cart page.
+
+Cart Page:  In this page, if you want to remove added items you can just remove by clicking on remove button. While buying the product there is also
+option for applying a coupon, after entering the coupon code that you can get 20% discount per book. After it will be redirected to checkout page there we have to fill all the details of customer and proceed to next step.
+
+Payment Gateway: After clicking proceed button the customer will be redirected to payment page there have to fill the payment details and then it will refer to OTP page.
+
+OTP Page: Enter the correct OTP and it will display the message "Your Payment is Successful". 
